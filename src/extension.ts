@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 
 //let curEditor;
 
-class TDCP implements vscode.TextDocumentContentProvider {
+class TextDocumentContentProvider implements vscode.TextDocumentContentProvider {
 
     private _onDidChange = new vscode.EventEmitter<vscode.Uri>();
     private ownUri:vscode.Uri;
@@ -36,7 +36,6 @@ class TDCP implements vscode.TextDocumentContentProvider {
     private enumSymbols(text:string) {
         // TODO: add symbols that are not functions
         // TODO: add languages / language symbol definitions / parsers
-        var syms;
         let splitByLine = text.split(/\n/);
         let functionLines = [];
         for (let i=0; i<splitByLine.length; i++) {
@@ -45,14 +44,6 @@ class TDCP implements vscode.TextDocumentContentProvider {
                 functionLines.push({"name":fnd[1],"line":i+1,"col":fnd.index+"function ".length,"kind":"function"});
             }
         }
-        /*
-        let splitByFunction = text.split(/function\s+/);
-        if (splitByFunction.length>0) {
-            let functionNames = splitByFunction.map(x=>x.split(/\s/)[0]).filter(x=>x.length>0);
-            syms = functionNames.map(x=>{return {"name":x, "line":0, "col":0, "kind": "function"}}); // TODO: parse by lines, not by keyword
-        } else {
-            syms = {};
-        }*/
         return functionLines;
     }
 
@@ -68,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     let previewUri = vscode.Uri.parse("code-structure://the/preview");
 
-    let provider = new TDCP();
+    let provider = new TextDocumentContentProvider();
     provider.setOwnUri(previewUri);
     let registration = vscode.workspace.registerTextDocumentContentProvider("code-structure",provider);
 
