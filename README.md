@@ -1,6 +1,6 @@
 # Code Structure Preview readme
 
-**Code Structure Preview** is a plugin for [Microsoft Visual Studio Code](https://code.visualstudio.com/) that shows the code structure from 
+**Code Structure Preview** is a plugin for [Microsoft Visual Studio Code](https://code.visualstudio.com/) that shows the code structure from
 the current editor in a preview tab on the second column. Symbols are listed as hyperlinks.
 
 Current version only shows functions.
@@ -8,6 +8,7 @@ Current version only shows functions.
 ## Features
 
 You can open the code structure preview by using either of these methods:
+
 * Press **Alt + Shift + C**, or
 * Press **F1** or **Ctrl + Shift + P**, then select **Code Structure Preview**
 
@@ -28,8 +29,8 @@ For example:
 This extension contributes the following settings:
 
 * `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
--->
+* `myExtension.thing`: set to `blah` to do something -->
+
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
