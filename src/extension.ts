@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 
 //let curEditor;
 
+
 class TextDocumentContentProvider implements vscode.TextDocumentContentProvider {
 
     private _onDidChange = new vscode.EventEmitter<vscode.Uri>();
@@ -67,6 +68,10 @@ export function activate(context: vscode.ExtensionContext) {
         if (e.document === vscode.window.activeTextEditor.document) {
             provider.update(previewUri);
         }
+    });
+
+    vscode.window.onDidChangeActiveTextEditor((e:vscode.TextEditor) => {
+        provider.update(previewUri);
     });
 
     // The command has been defined in the package.json file
